@@ -17,7 +17,7 @@ const ResultModal = forwardRef(function ResultModal({ result, targetTime, remani
     }
   });
   
-  return (
+  return createPortal(
     <dialog ref={ref} className="result-modal">
       {userLost && <h2>You {result} </h2>}
       {!userLost && <h2>Your Score: {score}</h2>}
@@ -30,7 +30,8 @@ const ResultModal = forwardRef(function ResultModal({ result, targetTime, remani
       <form method="dialog" onSubmit={onReset} onClose={onReset}>
         <button>close</button>
       </form>
-    </dialog>
+    </dialog>,
+    document.getElementById('modal')
     )
 })
 
